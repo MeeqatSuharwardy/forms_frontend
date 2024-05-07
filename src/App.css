@@ -97,3 +97,12 @@
 .jvectormap-container{
   height: 300px;
 }
+
+.loader img, .top img {
+  transition: all 0.3s ease;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.loader img:hover, .top img:hover {
+  box-shadow: none;
+}

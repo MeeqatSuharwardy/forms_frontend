@@ -5,7 +5,7 @@ import { auth } from "./firebaseConfig"; // Import Firebase authentication
 import Logo from "../assets/images/logo/psychiatry_logo.png";
 import { updateEmail, updatePassword } from "../actions";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import "../App.css";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -44,19 +44,19 @@ class Login extends React.Component {
           style={{ display: isLoad ? "block" : "none" }}
         >
           <div className="loader">
-            <img src={Logo} alt="Lucid" width="48" height="48" />
+            <img src={Logo} alt="Lucid" width="40" height="40" />
             <p>Please wait...</p>
           </div>
         </div>
+        <div>
+          <img
+            src={Logo}
+            alt="Lucid"
+            style={{ height: "150px", margin: "70px", alignItems: "center" }}
+          />
+        </div>
         <div className="auth-main">
           <div className="auth-box">
-            <div className="top">
-              <img
-                src={Logo}
-                alt="Lucid"
-                style={{ height: "40px", margin: "10px" }}
-              />
-            </div>
             <div className="card">
               <div className="header">
                 <p className="lead">Login to your account</p>

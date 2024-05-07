@@ -71,6 +71,17 @@ class FileDocuments extends React.Component {
         endpoint: `${process.env.REACT_APP_API_URL}/Employee_Enrollment_form`,
         pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/Employee_Enrollment_form`,
       },
+
+      {
+        name: "Credentialing Checklist",
+        endpoint: `${process.env.REACT_APP_API_URL}/credentialing_checklist`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/credentialing_checklist`,
+      },
+      {
+        name: "Credentialing Checklist Comprehensive",
+        endpoint: `${process.env.REACT_APP_API_URL}/credentialing_comprehensive_checklist`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/credentialing_comprehensive_checklist`,
+      },
     ],
   };
 

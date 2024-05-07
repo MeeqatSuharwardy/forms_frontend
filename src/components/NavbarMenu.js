@@ -17,7 +17,7 @@ import {
 } from "../actions";
 import Logo from "../assets/images/logo/psychiatry_logo.png";
 import LogoWhite from "../assets/images/logo/psychiatry_logo.png";
-import UserImage from "../assets/images/logo/psychiatry_logo.jpg";
+import UserImage from "../assets/images/lg/profile_pic.jpeg";
 import Avatar4 from "../assets/images/xs/avatar4.jpg";
 import Avatar5 from "../assets/images/xs/avatar5.jpg";
 import Avatar2 from "../assets/images/xs/avatar2.jpg";
@@ -183,7 +183,7 @@ class NavbarMenu extends React.Component {
             </div>
 
             <div className="navbar-brand">
-              <a href="dashboard">
+              <a href="filedocuments">
                 <img
                   src={
                     document.body.classList.contains("full-dark")
@@ -191,6 +191,7 @@ class NavbarMenu extends React.Component {
                       : Logo
                   }
                   alt="Lucid Logo"
+                  style={{ width: "120px", height: "50px" }}
                   className="img-responsive logo"
                 />
               </a>
