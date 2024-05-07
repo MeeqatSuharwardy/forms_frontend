@@ -424,7 +424,7 @@ class NavbarMenu extends React.Component {
                   id="dropdown-basic"
                   className="user-name"
                 >
-                  <strong>Health and Pshyciatry</strong>
+                  <strong>Health and Psychiatry</strong>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="dropdown-menu-right account">

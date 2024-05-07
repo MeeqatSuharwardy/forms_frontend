@@ -36,6 +36,41 @@ class FileDocuments extends React.Component {
         endpoint: `${process.env.REACT_APP_API_URL}/hippa_agreement`,
         pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/hippa_agreement.pdf`,
       },
+      {
+        name: "Cell Phone Policy",
+        endpoint: `${process.env.REACT_APP_API_URL}/cell_phone_policy`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/cell_phone_policy.pdf`,
+      },
+      {
+        name: "Employee’s Withholding Certificate",
+        endpoint: `${process.env.REACT_APP_API_URL}/Employees_Withholding_Certificate`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/Employees_Withholding_Certificate.pdf`,
+      },
+      {
+        name: "Direct Deposit Authorization",
+        endpoint: `${process.env.REACT_APP_API_URL}/direct_deposit_authorization`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/direct_deposit_authorization.pdf`,
+      },
+      {
+        name: "Employee Handbook",
+        endpoint: `${process.env.REACT_APP_API_URL}/hap_employee_handbook`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/hap_employee_handbook.pdf`,
+      },
+      {
+        name: "Receipt of Employee Handbook",
+        endpoint: `${process.env.REACT_APP_API_URL}/receipt_of_employee_handbook`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/receipt_of_employee_handbook.pdf`,
+      },
+      {
+        name: "I-9",
+        endpoint: `${process.env.REACT_APP_API_URL}/i-9`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/i-9`,
+      },
+      {
+        name: "UHC Employee Enrollment Form - Health & Phychiatry",
+        endpoint: `${process.env.REACT_APP_API_URL}/Employee_Enrollment_form`,
+        pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/Employee_Enrollment_form`,
+      },
     ],
   };
 
