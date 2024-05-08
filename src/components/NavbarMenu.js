@@ -165,7 +165,7 @@ class NavbarMenu extends React.Component {
             delay={5000}
           >
             <Toast.Header className="toast-info mb-0">
-              Hello, welcome to Health & Pshyciatry Form Dashboard.
+              Hello, welcome to Health & Psychiatry Form Dashboard.
             </Toast.Header>
           </Toast>
         ) : null}

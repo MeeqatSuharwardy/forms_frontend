@@ -32,7 +32,7 @@ class FileDocuments extends React.Component {
         pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/Receipt_of_Property.pdf`,
       },
       {
-        name: "Hippa Agreement",
+        name: "HIPPA Agreement",
         endpoint: `${process.env.REACT_APP_API_URL}/hippa_agreement`,
         pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/hippa_agreement.pdf`,
       },
@@ -67,7 +67,7 @@ class FileDocuments extends React.Component {
         pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/i-9`,
       },
       {
-        name: "UHC Employee Enrollment Form - Health & Phychiatry",
+        name: "UHC Employee Enrollment Form - Health & Psychiatry",
         endpoint: `${process.env.REACT_APP_API_URL}/Employee_Enrollment_form`,
         pdfEndpoint: `${process.env.REACT_APP_PDF_PATH}/Employee_Enrollment_form`,
       },
