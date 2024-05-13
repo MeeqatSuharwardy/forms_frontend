@@ -6,11 +6,11 @@ class FileDocuments extends React.Component {
   state = {
     documents: [
       {
-        name: "Anti Harassment",
+        name: "Anti-Harassment Agreement",
         path: `${process.env.PUBLIC_URL}/AntiHarassmentForm`,
       },
       {
-        name: "Application for Employment",
+        name: "Employee Information",
         path: `${process.env.PUBLIC_URL}/EmploymentForm`,
       },
       {
@@ -30,7 +30,7 @@ class FileDocuments extends React.Component {
         path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
       },
       {
-        name: "Employee Emergency Contacts",
+        name: "Emergency Contacts",
         path: `${process.env.PUBLIC_URL}/EmployeeEmergencyContacts`,
       },
       {
@@ -45,7 +45,6 @@ class FileDocuments extends React.Component {
         name: "Receipt of Company Property",
         path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
       },
-      // Add other form routes similarly
     ],
   };
 

@@ -3,19 +3,21 @@ import { Link } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import I9 from "../../assets/files/i-9.pdf";
 import FW4 from "../../assets/files/fw4.pdf";
+import EH from "../../assets/files/HAP_Employee_Handbook_FINAL";
+
 class FileDocumentsEmployee extends React.Component {
   state = {
     documents: [
       {
-        name: "Anti Harassment",
+        name: "Anti-Harassment Agreement",
         path: `${process.env.PUBLIC_URL}/AntiHarassmentForm`,
       },
       {
-        name: "Application for Employment",
+        name: "Employee Information",
         path: `${process.env.PUBLIC_URL}/EmploymentForm`,
       },
       {
-        name: "Cell Phone Policy",
+        name: "Cell Phone Agreement",
         path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
       },
       {
@@ -27,15 +29,15 @@ class FileDocumentsEmployee extends React.Component {
         path: `${process.env.PUBLIC_URL}/CredentialingApplicationForm`,
       },
       {
-        name: "Direct Deposit Authorization",
+        name: "Direct Deposit",
         path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
       },
       {
-        name: "Employee Emergency Contacts",
+        name: "Emergency Contacts",
         path: `${process.env.PUBLIC_URL}/EmployeeEmergencyContacts`,
       },
       {
-        name: "Employee Payroll Information",
+        name: "Employee Payroll",
         path: `${process.env.PUBLIC_URL}/EmployeePayrollForm`,
       },
       {
@@ -43,17 +45,21 @@ class FileDocumentsEmployee extends React.Component {
         path: `${process.env.PUBLIC_URL}/EmployeeConfidentialityForm`,
       },
       {
-        name: "Receipt of Company Property",
+        name: "* Receipt of Company Property",
         path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
       },
       {
-        name: "I-9 Form",
+        name: "2024 I-9 Form ",
         path: `${process.env.PUBLIC_URL}/I9PDF`,
       },
 
       {
-        name: "W4 Form",
+        name: "2024 W-4 Form",
         path: `${process.env.PUBLIC_URL}/Fw4PDF`,
+      },
+      {
+        name: "Employee Handbook",
+        path: EH,
       },
     ],
   };
