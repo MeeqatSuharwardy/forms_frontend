@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PageHeader from "../../components/PageHeader";
+import I9 from "../../assets/files/i-9.pdf";
+import FW4 from "../../assets/files/fw4.pdf";
+import EH from "../../assets/files/HAP_Employee_Handbook_FINAL.pdf";
 
-class FileDocuments extends React.Component {
+class FileDocumentsEmployee extends React.Component {
   state = {
     documents: [
       {
@@ -14,7 +16,7 @@ class FileDocuments extends React.Component {
         path: `${process.env.PUBLIC_URL}/EmploymentForm`,
       },
       {
-        name: "Cell Phone Policy",
+        name: "Cell Phone Agreement",
         path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
       },
       {
@@ -26,7 +28,7 @@ class FileDocuments extends React.Component {
         path: `${process.env.PUBLIC_URL}/CredentialingApplicationForm`,
       },
       {
-        name: "Direct Deposit Authorization",
+        name: "Direct Deposit",
         path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
       },
       {
@@ -34,16 +36,29 @@ class FileDocuments extends React.Component {
         path: `${process.env.PUBLIC_URL}/EmployeeEmergencyContacts`,
       },
       {
-        name: "Employee Payroll Information",
+        name: "Employee Payroll",
         path: `${process.env.PUBLIC_URL}/EmployeePayrollForm`,
       },
       {
-        name: "Employee Confidentiality Agreement",
+        name: "HIPPA Agreement",
         path: `${process.env.PUBLIC_URL}/EmployeeConfidentialityForm`,
       },
       {
         name: "Receipt of Company Property",
         path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
+      },
+      {
+        name: "2024 I-9 Form ",
+        path: `${process.env.PUBLIC_URL}/I9PDF`,
+      },
+
+      {
+        name: "2024 W-4 Form",
+        path: `${process.env.PUBLIC_URL}/Fw4PDF`,
+      },
+      {
+        name: "Employee Handbook",
+        path: EH,
       },
     ],
   };

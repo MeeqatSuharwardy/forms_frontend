@@ -21,14 +21,6 @@ class FileDocumentsEmployee extends React.Component {
         path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
       },
       {
-        name: "Credentialing Checklist",
-        path: `${process.env.PUBLIC_URL}/CredentialingChecklist`,
-      },
-      {
-        name: "Credentialing Application Form",
-        path: `${process.env.PUBLIC_URL}/CredentialingApplicationForm`,
-      },
-      {
         name: "Direct Deposit",
         path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
       },
@@ -45,7 +37,7 @@ class FileDocumentsEmployee extends React.Component {
         path: `${process.env.PUBLIC_URL}/EmployeeConfidentialityForm`,
       },
       {
-        name: "* Receipt of Company Property",
+        name: "Receipt of Company Property",
         path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
       },
       {
