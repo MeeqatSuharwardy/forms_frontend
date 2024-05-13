@@ -55,7 +55,7 @@ function EmployeeConfidentialityForm() {
     event.preventDefault();
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/submit_hipaa_agreement/",
+        "http://127.0.0.1:5000/submit_hipaa_agreement/",
         {
           method: "POST",
           headers: {

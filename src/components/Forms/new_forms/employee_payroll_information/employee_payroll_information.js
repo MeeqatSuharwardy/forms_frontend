@@ -70,7 +70,7 @@ function EmployeePayrollForm() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/submit_employee_payroll/",
+        "http://127.0.0.1:5000/submit_employee_payroll/",
         {
           method: "POST",
           headers: {

@@ -66,7 +66,7 @@ function DirectDepositForm() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/submit_direct_deposit/",
+        "http://127.0.0.1:5000/submit_direct_deposit/",
         {
           method: "POST",
           headers: {

@@ -60,7 +60,7 @@ function CellPhonePolicyForm() {
 
     // Send the request to the server endpoint
     fetch(
-      "http://127.0.0.1:8000/submit_cell_phone_policy_form/",
+      "http://127.0.0.1:5000/submit_cell_phone_policy_form/",
       requestOptions
     )
       .then((response) => response.json())

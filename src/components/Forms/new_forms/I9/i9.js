@@ -65,7 +65,7 @@ export default function I9PDF() {
     formData.append("pdf_file", file, file.name); // Send the uploaded file
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/upload_pdf/", {
+      const response = await fetch("http://127.0.0.1:5000/upload_pdf/", {
         method: "POST",
         body: formData,
       });

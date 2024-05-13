@@ -65,7 +65,7 @@ function AntiHarassmentForm() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/anti_harassment_submit_form/",
+        "http://127.0.0.1:5000/anti_harassment_submit_form/",
         {
           method: "POST",
           headers: {

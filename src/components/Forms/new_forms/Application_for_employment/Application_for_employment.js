@@ -109,7 +109,7 @@ function EmploymentForm() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/submit_application/",
+        "http://127.0.0.1:5000/submit_application/",
         {
           method: "POST",
           headers: {

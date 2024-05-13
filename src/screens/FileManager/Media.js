@@ -124,19 +124,19 @@ function FileMedia({ isSecuritySystem }) {
     let url;
     switch (searchType) {
       case "anti_harassment":
-        url = `http://127.0.0.1:8000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "applications":
-        url = `http://127.0.0.1:8000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "cell_phone":
-        url = `http://127.0.0.1:8000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "direct_deposits":
-        url = `http://127.0.0.1:8000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
+        url = `http://127.0.0.1:5000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
         break;
       case "emergency_contacts":
-        url = `http://127.0.0.1:8000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
+        url = `http://127.0.0.1:5000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
         break;
       default:
         return;
