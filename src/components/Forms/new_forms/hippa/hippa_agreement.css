@@ -1,0 +1,74 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: white;
+}
+
+
+.docx {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    color: black;
+}
+.editable {
+    display: inline-block;
+    border-bottom: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
+.editable[data-placeholder]:empty:before {
+    content: attr(data-placeholder);
+    color: grey;
+}
+.form-group {
+        margin-bottom: 20px;
+    }
+.document {
+    background: white;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    color: black;
+}
+button {
+    background-color: black;
+    color: white;
+}
+h1, h2 {
+    color: black;
+    text-align: center;
+}
+form {
+    margin-top: 20px;
+}
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #4472C4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #365F91;
+}
+         canvas {
+        border: 1px solid #cccccc;
+        width: 500px;
+        height: 100px; /* Set the height of the canvas */
+    }

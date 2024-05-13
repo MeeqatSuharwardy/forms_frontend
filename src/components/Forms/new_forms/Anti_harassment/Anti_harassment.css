@@ -1,0 +1,133 @@
+/* Basic Reset */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f7f7f7; /* Lighter background for better contrast */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333; /* Keeping text color black as specified */
+}
+
+/* Main container for content, centered with a shadow for depth */
+.container {
+    background: white;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px; /* Slightly narrower for focus */
+    border-radius: 8px; /* More rounded */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography styles for headers and text */
+h1, h2, h3 {
+    color: #000;
+}
+h1, h2, h3 {
+    color: #000;
+}
+h1 {
+    font-size: 2rem; /* Slightly smaller for elegance */
+    margin-bottom: 20px; /* Consistent spacing */
+}
+h2 {
+    font-size: 1.75rem;
+    margin: 20px 0;
+}
+h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+p, li {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: left;
+}
+ul, ol {
+    margin-left: 20px;
+    padding-left: 0;
+}
+li {
+    margin-bottom: 8px;
+}
+
+/* Link styling */
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the acknowledgment form */
+.acknowledgment-form {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Input and button styles */
+input[type="date"] {
+    width: 30%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    align-self: center;
+}
+
+input[type="text"], button {
+    width: 30%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    align-self: center;
+}
+input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #0056b3;
+}
+button {
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+button:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+
+
+
+
+/* Canvas specific styles */
+canvas {
+    border: none; /* Removing default border */
+    background-color: #fafafa; /* Slight off-white background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow for depth */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    h1, h2, h3 {
+        font-size: 90%; /* Slightly smaller fonts on smaller screens */
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}

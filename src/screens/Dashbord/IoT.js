@@ -6,18 +6,16 @@ import SecurityMainCard from "../../components/SecurityMainCard";
 import InstumateStatusCard from "../../components/InstumateStatusCard";
 import SwitchBordCard from "../../components/SwitchBordCard";
 
-import AcIcon from "../../assets/images/air-conditioner.png";
-import AcIconGray from "../../assets/images/air-conditioner-grey.png";
-import FridgeIcon from "../../assets/images/fridge.png";
-import FridgeIconGray from "../../assets/images/fridge-grey.png";
-import WMIcon from "../../assets/images/washing-machine.png";
-import WMIconGray from "../../assets/images/washing-machine-grey.png";
+// import FridgeIcon from "../../assets/images/fridge.png";
+// import FridgeIconGray from "../../assets/images/fridge-grey.png";
+// import WMIcon from "../../assets/images/washing-machine.png";
+// import WMIconGray from "../../assets/images/washing-machine-grey.png";
 
 import {
   sparkleCardData,
   buttonsIndoor,
   buttonsOutdoor,
-  buttonsAppliences
+  buttonsAppliences,
 } from "../../Data/IoTData";
 import {
   onPressSecuritySystem,
@@ -30,7 +28,7 @@ import {
   onPressSwithOnAllOut,
   onPressAllOffLightOut,
   onPressSwithOnAllIn,
-  onPressAllOffLightIn
+  onPressAllOffLightIn,
 } from "../../actions";
 
 class IoT extends React.Component {
@@ -45,7 +43,7 @@ class IoT extends React.Component {
       switchOutBoardSwitch,
       switchAppliencesBoardSwitch,
       isIndoorDropdown,
-      isOutdoorDropdown
+      isOutdoorDropdown,
     } = this.props;
     return (
       <div
@@ -53,9 +51,15 @@ class IoT extends React.Component {
           document.body.classList.remove("offcanvas-active");
         }}
       >
-        <div >
+        <div>
           <div className="container-fluid">
-            <PageHeader HeaderText="IoT Dashboard" Breadcrumb={[{ name: "Dashboard", navigate: "" }, { name: "IoT Dashboard", navigate: "" }]} />
+            <PageHeader
+              HeaderText="IoT Dashboard"
+              Breadcrumb={[
+                { name: "Dashboard", navigate: "" },
+                { name: "IoT Dashboard", navigate: "" },
+              ]}
+            />
             <div className="row clearfix">
               {sparkleCardData.map((data, i) => {
                 return (
@@ -98,7 +102,6 @@ class IoT extends React.Component {
             </div>
             <div className="row clearfix">
               <InstumateStatusCard
-                Icon={document.body.classList.contains("full-dark") ? AcIconGray : AcIcon}
                 InstumentName="Air Conditioner"
                 InstumentToggle="On"
                 FirstPeraText="Temprature"
@@ -107,7 +110,11 @@ class IoT extends React.Component {
                 SecondPeraValue="Cooling On"
               />
               <InstumateStatusCard
-                Icon={document.body.classList.contains("full-dark") ? FridgeIconGray : FridgeIcon}
+                // Icon={
+                //   document.body.classList.contains("full-dark")
+                //     ? FridgeIconGray
+                //     : FridgeIcon
+                // }
                 InstumentName="Fridge"
                 InstumentToggle="On"
                 FirstPeraText="Temprature"
@@ -116,7 +123,11 @@ class IoT extends React.Component {
                 SecondPeraValue="Stand By"
               />
               <InstumateStatusCard
-                Icon={document.body.classList.contains("full-dark") ? WMIconGray : WMIcon}
+                // Icon={
+                //   document.body.classList.contains("full-dark")
+                //     ? WMIconGray
+                //     : WMIcon
+                // }
                 InstumentName="Washing Machine"
                 InstumentToggle="On"
                 FirstPeraText="Remaining Time"
@@ -126,23 +137,35 @@ class IoT extends React.Component {
             <div className="row clearfix">
               <SwitchBordCard
                 Buttons={buttonsIndoor}
-                onPressDropDown={() => { this.props.onPressSwitchBordDropDown() }}
-                onPressAllOnLight={() => { this.props.onPressSwithOnAllIn() }}
-                onPressAllOffLight={() => { this.props.onPressAllOffLightIn() }}
+                onPressDropDown={() => {
+                  this.props.onPressSwitchBordDropDown();
+                }}
+                onPressAllOnLight={() => {
+                  this.props.onPressSwithOnAllIn();
+                }}
+                onPressAllOffLight={() => {
+                  this.props.onPressAllOffLightIn();
+                }}
                 isDropdownShow={isIndoorDropdown}
                 IsSwitch={switchBoardSwitch}
-                OnPressSwitch={index =>
+                OnPressSwitch={(index) =>
                   this.props.onPressSwitchBordButton(index)
                 }
               />
               <SwitchBordCard
-                onPressDropDown={() => { this.props.onPressOutdoorDropDown() }}
+                onPressDropDown={() => {
+                  this.props.onPressOutdoorDropDown();
+                }}
                 isDropdownShow={isOutdoorDropdown}
-                onPressAllOnLight={() => { this.props.onPressSwithOnAllOut() }}
-                onPressAllOffLight={() => { this.props.onPressAllOffLightOut() }}
+                onPressAllOnLight={() => {
+                  this.props.onPressSwithOnAllOut();
+                }}
+                onPressAllOffLight={() => {
+                  this.props.onPressAllOffLightOut();
+                }}
                 Buttons={buttonsOutdoor}
                 IsSwitch={switchOutBoardSwitch}
-                OnPressSwitch={index =>
+                OnPressSwitch={(index) =>
                   this.props.onPressOutSwitchBordButton(index)
                 }
               />
@@ -151,7 +174,7 @@ class IoT extends React.Component {
                 disabledDropDown={true}
                 Buttons={buttonsAppliences}
                 IsSwitch={switchAppliencesBoardSwitch}
-                OnPressSwitch={index =>
+                OnPressSwitch={(index) =>
                   this.props.onPressAppliencesSwitchBordButton(index)
                 }
               />
@@ -170,7 +193,7 @@ const mapStateToProps = ({ ioTReducer }) => ({
   switchOutBoardSwitch: ioTReducer.switchOutBoardSwitch,
   switchAppliencesBoardSwitch: ioTReducer.switchAppliencesBoardSwitch,
   isIndoorDropdown: ioTReducer.isIndoorDropdown,
-  isOutdoorDropdown: ioTReducer.isOutdoorDropdown
+  isOutdoorDropdown: ioTReducer.isOutdoorDropdown,
 });
 
 export default connect(mapStateToProps, {
@@ -184,5 +207,5 @@ export default connect(mapStateToProps, {
   onPressSwithOnAllOut,
   onPressAllOffLightOut,
   onPressSwithOnAllIn,
-  onPressAllOffLightIn
+  onPressAllOffLightIn,
 })(IoT);

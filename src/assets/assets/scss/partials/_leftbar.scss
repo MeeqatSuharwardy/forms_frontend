@@ -56,10 +56,11 @@
 	@extend .align-left;
 
 	.user-photo {
-		width: 50px;
+		width: 90px;
     	vertical-align: top;		
 		border: 2px solid darken($sidebar-color, 10%);
 		@extend .m-r-10;
+		padding-left: 1%
 	}
 
 	.user-name {

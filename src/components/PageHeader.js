@@ -51,7 +51,7 @@ class PageHeader extends React.Component {
       <div className="block-header">
         <div className="row">
           <div className="col-lg-5 col-md-6 col-sm-12">
-            <h2>
+            <h2 style={{ alignSelf: "left" }}>
               <a
                 href="#!"
                 className="btn btn-xs btn-link btn-toggle-fullwidth"

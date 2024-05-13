@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import modalImage from "../../assets/images/model3.jpg";
+// import modalImage from "../../assets/images/model3.jpg";
 
 class UIModalCard extends React.Component {
   render() {
@@ -14,11 +14,11 @@ class UIModalCard extends React.Component {
           </div>
           <div className="body">
             <Link to="#" data-toggle="modal" onClick={onClick}>
-              <img
+              {/* <img
                 className="img-thumbnail img-fluid"
                 src={modalImage}
                 alt="User"
-              />
+              /> */}
             </Link>
           </div>
         </div>

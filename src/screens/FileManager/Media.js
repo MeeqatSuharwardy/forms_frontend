@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import PageHeader from "../../components/PageHeader";
-import { Button, Typography, IconButton, Tooltip } from "@mui/material";
+import {
+  Button,
+  Typography,
+  IconButton,
+  Tooltip,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Paper,
+  Container,
+} from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,20 +27,63 @@ import "slick-carousel/slick/slick-theme.css";
 
 function FileMedia({ isSecuritySystem }) {
   const [directories, setDirectories] = useState([]);
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/list-pdfs`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.categories) {
-          setDirectories(data.categories);
-        }
-      })
-      .catch((error) => console.error("Error fetching PDFs:", error));
-  }, []);
-
-  const formatCategoryName = (name) => {
-    return name.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/_/g, " ");
+  const [searchType, setSearchType] = useState("");
+  const [searchParams, setSearchParams] = useState({
+    printed_name: "",
+    date_of_birth: "",
+    position: "",
+    name: "",
+    date: "",
+  });
+  const [searchResults, setSearchResults] = useState([]);
+  const searchFields = {
+    anti_harassment: [
+      ["printed_name", "Printed Name"],
+      ["date_of_birth", "Date of Birth"],
+    ],
+    applications: [
+      ["position", "Position"],
+      ["name", "Name"],
+      ["date_of_birth", "Date of Birth"],
+    ],
+    cell_phone: [
+      ["printed_name", "Printed Name"],
+      ["date_of_birth", "Date of Birth"],
+    ],
+    direct_deposits: [
+      ["name", "Name"],
+      ["date", "Date"],
+    ],
+    emergency_contacts: [
+      ["name", "Name"],
+      ["date", "Date"],
+    ],
+  };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+    ],
   };
 
   const handleDelete = (category, filename) => {
@@ -58,89 +116,153 @@ function FileMedia({ isSecuritySystem }) {
       });
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
+  const handleInputChange = (e) => {
+    setSearchParams({ ...searchParams, [e.target.name]: e.target.value });
   };
 
+  const handleSearch = async () => {
+    let url;
+    switch (searchType) {
+      case "anti_harassment":
+        url = `http://127.0.0.1:8000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        break;
+      case "applications":
+        url = `http://127.0.0.1:8000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
+        break;
+      case "cell_phone":
+        url = `http://127.0.0.1:8000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        break;
+      case "direct_deposits":
+        url = `http://127.0.0.1:8000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
+        break;
+      case "emergency_contacts":
+        url = `http://127.0.0.1:8000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
+        break;
+      default:
+        return;
+    }
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data && data.applications) {
+        // Check and use the `applications` array from the response
+        setSearchResults(data.applications);
+      } else {
+        setSearchResults([]); // Set to an empty array if no applications are found
+      }
+    } catch (error) {
+      console.error("Search failed:", error);
+      setSearchResults([]); // Ensure searchResults is reset or set to an empty array on error
+      alert("Failed to fetch search results.");
+    }
+  };
+  const inputsToRender = searchType ? searchFields[searchType] : [];
+
   return (
-    <div
-      className="file-media"
-      onClick={() => document.body.classList.remove("offcanvas-active")}
-    >
-      <PageHeader
-        HeaderText="File Media"
-        Breadcrumb={[
-          { name: "File Manager", navigate: "" },
-          { name: "File Media", navigate: "" },
-        ]}
-      />
-      {directories.map((dir) => (
-        <div key={dir.category} className="category">
-          <Typography variant="h5" component="h2" gutterBottom>
-            {formatCategoryName(dir.category)}
-          </Typography>
-          <Slider {...settings}>
-            {dir.files.map((file, index) => (
-              <div key={index} className="document-card">
-                <div className="file-actions">
-                  <Tooltip title="View">
-                    <IconButton
-                      href={`${process.env.REACT_APP_API_URL}/${dir.category}/${file}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Typography variant="h4" gutterBottom>
+          Document Management Dashboard
+        </Typography>
+        <FormControl fullWidth sx={{ mb: 2 }}>
+          <InputLabel id="search-type-label">Search Type</InputLabel>
+          <Select
+            labelId="search-type-label"
+            value={searchType}
+            label="Search Type"
+            onChange={(e) => setSearchType(e.target.value)}
+          >
+            <MenuItem value="anti_harassment">
+              Anti Harassment Form Search
+            </MenuItem>
+            <MenuItem value="applications">Applications Search</MenuItem>
+            <MenuItem value="cell_phone">
+              Cell Phone Policy Records Search
+            </MenuItem>
+            <MenuItem value="direct_deposits">Direct Deposits Search</MenuItem>
+            <MenuItem value="emergency_contacts">
+              Emergency Contacts Search
+            </MenuItem>
+          </Select>
+        </FormControl>
+        <Grid container spacing={2}>
+          {inputsToRender.map(([key, label]) => (
+            <Grid item xs={12} sm={6} md={4} key={key}>
+              <TextField
+                label={label}
+                name={key}
+                value={searchParams[key] || ""}
+                onChange={handleInputChange}
+                fullWidth
+                variant="outlined"
+                margin="normal"
+                style={{ width: "60%" }}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        <br></br>
+        <Grid item xs={12}>
+          <Button onClick={handleSearch} variant="contained" color="primary">
+            Search
+          </Button>
+        </Grid>
+
+        <br />
+        <Grid container spacing={2}>
+          {searchResults.length > 0 ? (
+            searchResults.map((result, index) => (
+              <Grid item xs={12} md={6} key={index}>
+                <Card raised>
+                  <CardContent>
+                    <Typography variant="body2" component="p">
+                      Name: {result.name}
+                      <br />
+                      Position: {result.position_applying_for}
+                      <br />
+                      Date of Birth: {result.date_of_birth}
+                    </Typography>
+                    <iframe
+                      src={result.pdf_url}
+                      style={{ width: "100%", height: "500px" }}
+                      frameBorder="0"
                     >
-                      <VisibilityIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Download">
-                    <IconButton
-                      href={`${process.env.REACT_APP_API_URL}/${dir.category}/${file}`}
+                      PDF cannot be displayed
+                    </iframe>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      href={result.pdf_url}
+                      target="_blank"
+                    >
+                      View PDF
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      href={result.pdf_url}
                       download
                     >
-                      <FileDownloadIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Delete">
-                    <IconButton
-                      color="error"
-                      onClick={() => handleDelete(dir.category, file)}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-                <Typography variant="caption" display="block" gutterBottom>
-                  {file}
-                </Typography>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      ))}
-    </div>
+                      Download PDF
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography
+              variant="h6"
+              sx={{ width: "100%", mt: 2, textAlign: "center" }}
+            >
+              No results found or error in fetching data.
+            </Typography>
+          )}
+        </Grid>
+      </Paper>
+    </Container>
   );
 }
 

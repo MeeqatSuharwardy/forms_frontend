@@ -4,7 +4,7 @@ import ReactEcharts from "echarts-for-react";
 import { Link } from "react-router-dom";
 import "echarts-gl";
 import echarts from "echarts";
-import LogoiCON from "../../assets/images/logo-icon.svg";
+import LogoiCON from "../../assets/images/logo/psychiatry_logo.png";
 import AwsomeImage from "../../assets/images/blog/blog-page-4.jpg";
 import AwsomeImageOt from "../../assets/images/blog/blog-page-2.jpg";
 import { Dropdown } from "react-bootstrap";
@@ -66,9 +66,9 @@ class Dashbord extends React.Component {
     cardData.map((data, i) => {
       var uData = [];
       data.sparklineData.data.map((d, j) => {
-        return uData[j] = Math.floor(Math.random() * 10) + 1;
+        return (uData[j] = Math.floor(Math.random() * 10) + 1);
       });
-      return allCardData[i].sparklineData.data = [...uData];
+      return (allCardData[i].sparklineData.data = [...uData]);
     });
     return this.setState({ cardData: [...allCardData] });
   }
@@ -421,7 +421,8 @@ class Dashbord extends React.Component {
                         <Link to="#" className="m-r-20">
                           <i className="icon-heart"></i> Like
                         </Link>
-                        <Link to="#"
+                        <Link
+                          to="#"
                           role="button"
                           data-toggle="collapse"
                           aria-expanded="false"
@@ -454,7 +455,10 @@ class Dashbord extends React.Component {
                     >
                       <h5>Oeehhh, that's awesome.. Me too!</h5>
                       <span>
-                        <Link to="#" title="">Katherine Lumaad</Link> Oakland, CA
+                        <Link to="#" title="">
+                          Katherine Lumaad
+                        </Link>{" "}
+                        Oakland, CA
                       </span>
                       <div className="msg">
                         <p>
@@ -479,7 +483,8 @@ class Dashbord extends React.Component {
                         <Link to="#" className="m-r-20">
                           <i className="icon-heart"></i> Like
                         </Link>
-                        <Link to="#"
+                        <Link
+                          to="#"
                           role="button"
                           data-toggle="collapse"
                           aria-expanded="false"
@@ -512,7 +517,10 @@ class Dashbord extends React.Component {
                         Larger Pizza
                       </h5>
                       <span>
-                        <Link to="#" title="">Gary Camara</Link> San Francisco, CA
+                        <Link to="#" title="">
+                          Gary Camara
+                        </Link>{" "}
+                        San Francisco, CA
                       </span>
                       <div className="msg">
                         <p>
@@ -525,7 +533,8 @@ class Dashbord extends React.Component {
                         <Link to="#" className="m-r-20">
                           <i className="icon-heart"></i> Like
                         </Link>
-                        <Link to="#"
+                        <Link
+                          to="#"
                           role="button"
                           data-toggle="collapse"
                           aria-expanded="false"

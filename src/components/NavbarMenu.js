@@ -52,6 +52,8 @@ class NavbarMenu extends React.Component {
     } else if (
       activeKey === "/filemanagerdashboard" ||
       activeKey === "/filedocuments" ||
+      activeKey === "/FileDocumentsEmployee" ||
+      activeKey === "/FileDocumentsCrdentials" ||
       activeKey === "/filemedia"
     ) {
       this.activeMenutabContainer("FileManagerContainer");
@@ -625,7 +627,33 @@ class NavbarMenu extends React.Component {
                           <Link to="filedocuments">Documents</Link>
                         </li>
                         <li
-                          className={activeKey === "filemedia" ? "active" : ""}
+                          className={
+                            activeKey === "filedocuments2" ? "active" : ""
+                          }
+                          onClick={() => {}}
+                        >
+                          <Link to="FileDocumentsEmployee">
+                            Employee Documents
+                          </Link>
+                        </li>
+                        <li
+                          className={
+                            activeKey === "FileDocumentsEmployee"
+                              ? "active"
+                              : ""
+                          }
+                          onClick={() => {}}
+                        >
+                          <Link to="FileDocumentsCrdentials">
+                            Credential Documents
+                          </Link>
+                        </li>
+                        <li
+                          className={
+                            activeKey === "FileDocumentsCrdentials"
+                              ? "active"
+                              : ""
+                          }
                           onClick={() => {}}
                         >
                           <Link to="filemedia">Submitted form</Link>

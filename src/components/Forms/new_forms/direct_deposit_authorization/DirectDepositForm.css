@@ -1,0 +1,42 @@
+body, p, input, select {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+}
+
+.WordSection1 {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.TableGrid {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 4px;
+    vertical-align: top;
+}
+
+.input-line {
+    width: 98%;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+
+
+canvas {
+    border: 1px solid #cccccc;
+    width: 500px;
+    height: 100px;
+}

@@ -1,0 +1,102 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #fff;
+    padding: 20px;
+
+    margin: auto;
+}
+
+.submit-btn {
+/*display: block;*/
+width: 50%;
+padding: 10px;
+margin-top: 20px;
+background-color: #28a745;
+align-content: center;
+justify-content: center;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+background-color: #218838;
+}
+header, form {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 9px;
+}
+imgage {
+    margin: 0 auto 20px;
+}
+h1 {
+    font-size: 24px;
+    color: #009688;
+    margin-bottom: 0;
+}
+h2 {
+    font-size: 22px;
+    color: #333;
+}
+h3 {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+}
+canvas {
+    border: none; /* Removing default border */
+    background-color: #fafafa; /* Slight off-white background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow for depth */
+    max-width: 100%;
+}
+form {
+    border: 2px solid #009688;
+    padding: 20px;
+    margin-top: 5px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.signature-line {
+    border-top: 1px solid #000;
+    width: 300px;
+    margin: 20px auto;
+    padding-top: 10px;
+}
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.form-group-inline .form-group {
+    flex-basis: 48%;
+    min-width: 200px;
+}
+.authorization {
+    text-align: left;
+    font-size: 12px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+.authorization p {
+    margin: 10px 0;
+}
+.footer {
+    text-align: center;
+    margin-top: 40px;
+}
