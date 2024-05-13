@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import I9 from "../../assets/files/i-9.pdf";
 import FW4 from "../../assets/files/fw4.pdf";
-import EH from "../../assets/files/HAP_Employee_Handbook_FINAL";
+import EH from "../../assets/files/HAP_Employee_Handbook_FINAL.pdf";
 
 class FileDocumentsEmployee extends React.Component {
   state = {
