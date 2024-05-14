@@ -72,25 +72,25 @@ function FileMedia() {
     let url;
     switch (searchType) {
       case "anti_harassment":
-        url = `http://127.0.0.1:8000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "applications":
-        url = `http://127.0.0.1:8000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "cell_phone":
-        url = `http://127.0.0.1:8000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "direct_deposits":
-        url = `http://127.0.0.1:8000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
+        url = `http://127.0.0.1:5000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
         break;
       case "emergency_contacts":
-        url = `http://127.0.0.1:8000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
+        url = `http://127.0.0.1:5000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
         break;
       case "i9":
-        url = `http://127.0.0.1:8000/search_i9_forms/?full_name=${searchParams.full_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/search_i9_forms/?full_name=${searchParams.full_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "w4":
-        url = `http://127.0.0.1:8000/search_w4_forms/?full_name=${searchParams.full_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:5000/search_w4_forms/?full_name=${searchParams.full_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       default:
         return;
@@ -116,7 +116,7 @@ function FileMedia() {
   };
 
   const handleSendEmail = async () => {
-    const url = "http://127.0.0.1:8000/send_email/";
+    const url = "http://127.0.0.1:5000/send_email/";
     const response = await fetch(url, {
       method: "POST",
       headers: {
