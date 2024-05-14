@@ -123,6 +123,7 @@ function CellPhonePolicyForm() {
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
+              style={{ width: "40%", alignSelf: "center" }}
             />
           </div>
           <div className="center-text">
@@ -137,6 +138,7 @@ function CellPhonePolicyForm() {
               value={dateofbirth}
               onChange={(e) => setdateofbirth(e.target.value)} // Corrected this line
               required
+              style={{ width: "40%", alignSelf: "center" }}
             />
           </div>
 
@@ -152,6 +154,7 @@ function CellPhonePolicyForm() {
               value={printedName}
               onChange={(e) => setPrintedName(e.target.value)} // Corrected this line
               required
+              style={{ width: "50%", alignSelf: "center" }}
             />
           </div>
 

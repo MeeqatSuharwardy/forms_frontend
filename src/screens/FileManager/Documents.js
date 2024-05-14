@@ -4,52 +4,32 @@ import I9 from "../../assets/files/i-9.pdf";
 import FW4 from "../../assets/files/fw4.pdf";
 import EH from "../../assets/files/HAP_Employee_Handbook_FINAL.pdf";
 
-class FileDocumentsEmployee extends React.Component {
+class FileDocuments extends React.Component {
   state = {
     documents: [
       {
-        name: "Anti-Harassment Agreement",
-        path: `${process.env.PUBLIC_URL}/AntiHarassmentForm`,
-      },
-      {
         name: "Employee Information",
         path: `${process.env.PUBLIC_URL}/EmploymentForm`,
-      },
-      {
-        name: "Cell Phone Agreement",
-        path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
-      },
-      {
-        name: "Credentialing Checklist",
-        path: `${process.env.PUBLIC_URL}/CredentialingChecklist`,
-      },
-      {
-        name: "Credentialing Application Form",
-        path: `${process.env.PUBLIC_URL}/CredentialingApplicationForm`,
-      },
-      {
-        name: "Direct Deposit",
-        path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
       },
       {
         name: "Emergency Contacts",
         path: `${process.env.PUBLIC_URL}/EmployeeEmergencyContacts`,
       },
       {
-        name: "Employee Payroll",
-        path: `${process.env.PUBLIC_URL}/EmployeePayrollForm`,
+        name: "Anti-Harassment Agreement",
+        path: `${process.env.PUBLIC_URL}/AntiHarassmentForm`,
       },
       {
-        name: "HIPPA Agreement",
+        name: "HIPAA Agreement",
         path: `${process.env.PUBLIC_URL}/EmployeeConfidentialityForm`,
       },
       {
-        name: "Receipt of Company Property",
-        path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
+        name: "Cell Phone Agreement",
+        path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
       },
       {
-        name: "2024 I-9 Form ",
-        path: `${process.env.PUBLIC_URL}/I9PDF`,
+        name: "Employee Payroll",
+        path: `${process.env.PUBLIC_URL}/EmployeePayrollForm`,
       },
 
       {
@@ -57,8 +37,23 @@ class FileDocumentsEmployee extends React.Component {
         path: `${process.env.PUBLIC_URL}/Fw4PDF`,
       },
       {
+        name: "2024 I-9 Form ",
+        path: `${process.env.PUBLIC_URL}/I9PDF`,
+      },
+
+      {
+        name: "Direct Deposit",
+        path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
+      },
+
+      {
         name: "Employee Handbook",
         path: EH,
+      },
+
+      {
+        name: "Receipt of Company Property",
+        path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
       },
     ],
   };
@@ -77,9 +72,20 @@ class FileDocumentsEmployee extends React.Component {
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{doc.name}</h5>
-                  <Link to={doc.path} className="btn btn-primary">
-                    View Form
-                  </Link>
+                  {doc.path.includes(".pdf") ? (
+                    <a
+                      href={doc.path}
+                      className="btn btn-primary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Form
+                    </a>
+                  ) : (
+                    <Link to={doc.path} className="btn btn-primary">
+                      View Form
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

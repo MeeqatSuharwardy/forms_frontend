@@ -112,6 +112,7 @@ function ReceiptOfCompanyProperty() {
               onChange={handleInputChange}
               name="date"
               required
+              style={{ width: "50%", alignSelf: "center" }}
             />
           </div>
 

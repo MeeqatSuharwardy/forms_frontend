@@ -90,7 +90,7 @@ function EmployeeConfidentialityForm() {
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
         <div className="document">
-          <h2>Hippa Agreement</h2>
+          <h2>HIPAA Agreement</h2>
           <p>
             THIS AGREEMENT ("Agreement") entered into this
             <input

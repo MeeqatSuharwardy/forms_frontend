@@ -1,32 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
 import {
   Button,
   Typography,
-  IconButton,
-  Tooltip,
   TextField,
-  Select,
-  MenuItem,
   FormControl,
   InputLabel,
-  Card,
-  CardActions,
-  CardContent,
+  Select,
+  MenuItem,
   Grid,
   Paper,
   Container,
+  OutlinedInput,
+  Checkbox,
+  ListItemText,
+  Card,
+  CardContent,
+  CardActions,
 } from "@mui/material";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Slider from "react-slick";
+import { connect } from "react-redux";
 import "./media.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
-function FileMedia({ isSecuritySystem }) {
-  const [directories, setDirectories] = useState([]);
+function FileMedia() {
   const [searchType, setSearchType] = useState("");
   const [searchParams, setSearchParams] = useState({
     printed_name: "",
@@ -36,6 +30,16 @@ function FileMedia({ isSecuritySystem }) {
     date: "",
   });
   const [searchResults, setSearchResults] = useState([]);
+  const [emailParams, setEmailParams] = useState({
+    email: "",
+    subject: "",
+    message: "",
+    filenames: [],
+    user: "",
+    password: "",
+  });
+  const [availableForms, setAvailableForms] = useState([]);
+
   const searchFields = {
     anti_harassment: [
       ["printed_name", "Printed Name"],
@@ -59,62 +63,6 @@ function FileMedia({ isSecuritySystem }) {
       ["date", "Date"],
     ],
   };
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-  };
-
-  const handleDelete = (category, filename) => {
-    if (!window.confirm(`Are you sure you want to delete ${filename}?`)) {
-      return;
-    }
-    const url = `${process.env.REACT_APP_API_URL}/${category}/${filename}`;
-    fetch(url, { method: "DELETE" })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message) {
-          alert(data.message);
-          setDirectories((prev) =>
-            prev.map((dir) =>
-              dir.category === category
-                ? {
-                    ...dir,
-                    files: dir.files.filter((file) => file !== filename),
-                  }
-                : dir
-            )
-          );
-        } else if (data.error) {
-          alert(data.error);
-        }
-      })
-      .catch((error) => {
-        console.error("Error deleting the file:", error);
-        alert("Failed to delete the file");
-      });
-  };
 
   const handleInputChange = (e) => {
     setSearchParams({ ...searchParams, [e.target.name]: e.target.value });
@@ -124,19 +72,25 @@ function FileMedia({ isSecuritySystem }) {
     let url;
     switch (searchType) {
       case "anti_harassment":
-        url = `http://127.0.0.1:5000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:8000/anti_harassment_submit_form_search?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "applications":
-        url = `http://127.0.0.1:5000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:8000/search_applications?position=${searchParams.position}&name=${searchParams.name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "cell_phone":
-        url = `http://127.0.0.1:5000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
+        url = `http://127.0.0.1:8000/search_cell_phone_policy_records?printed_name=${searchParams.printed_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       case "direct_deposits":
-        url = `http://127.0.0.1:5000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
+        url = `http://127.0.0.1:8000/search_direct_deposits?name=${searchParams.name}&date=${searchParams.date}`;
         break;
       case "emergency_contacts":
-        url = `http://127.0.0.1:5000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
+        url = `http://127.0.0.1:8000/search_emergency_contacts?name=${searchParams.name}&date=${searchParams.date}`;
+        break;
+      case "i9":
+        url = `http://127.0.0.1:8000/search_i9_forms/?full_name=${searchParams.full_name}&date_of_birth=${searchParams.date_of_birth}`;
+        break;
+      case "w4":
+        url = `http://127.0.0.1:8000/search_w4_forms/?full_name=${searchParams.full_name}&date_of_birth=${searchParams.date_of_birth}`;
         break;
       default:
         return;
@@ -145,23 +99,44 @@ function FileMedia({ isSecuritySystem }) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      if (data && data.applications) {
-        // Check and use the `applications` array from the response
-        setSearchResults(data.applications);
+      if (searchType === "applications") {
+        setSearchResults(data.applications || []);
       } else {
-        setSearchResults([]); // Set to an empty array if no applications are found
+        setSearchResults(data.records || []);
       }
     } catch (error) {
       console.error("Search failed:", error);
-      setSearchResults([]); // Ensure searchResults is reset or set to an empty array on error
+      setSearchResults([]);
       alert("Failed to fetch search results.");
     }
   };
+
+  const handleEmailChange = (e) => {
+    setEmailParams({ ...emailParams, [e.target.name]: e.target.value });
+  };
+
+  const handleSendEmail = async () => {
+    const url = "http://127.0.0.1:8000/send_email/";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailParams),
+    });
+
+    if (response.ok) {
+      alert("Email sent successfully");
+    } else {
+      alert("Failed to send email");
+    }
+  };
+
   const inputsToRender = searchType ? searchFields[searchType] : [];
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Paper elevation={3} sx={{ p: 2 }}>
+    <Container maxWidth="lg" className="file-media-container">
+      <Paper elevation={3} className="file-media-paper">
         <Typography variant="h4" gutterBottom>
           Document Management Dashboard
         </Typography>
@@ -174,16 +149,14 @@ function FileMedia({ isSecuritySystem }) {
             onChange={(e) => setSearchType(e.target.value)}
           >
             <MenuItem value="anti_harassment">
-              Anti Harassment Form Search
+              Anti-Harassment Agreement
             </MenuItem>
-            <MenuItem value="applications">Applications Search</MenuItem>
-            <MenuItem value="cell_phone">
-              Cell Phone Policy Records Search
-            </MenuItem>
+            <MenuItem value="applications">Employee Information</MenuItem>
+            <MenuItem value="cell_phone">Cellphone Agreement</MenuItem>
             <MenuItem value="direct_deposits">Direct Deposits Search</MenuItem>
-            <MenuItem value="emergency_contacts">
-              Emergency Contacts Search
-            </MenuItem>
+            <MenuItem value="emergency_contacts">Emergency Contacts</MenuItem>
+            <MenuItem value="i9">2024 W-4 Form</MenuItem>
+            <MenuItem value="w4">2024 I-9 Form</MenuItem>
           </Select>
         </FormControl>
         <Grid container spacing={2}>
@@ -197,12 +170,11 @@ function FileMedia({ isSecuritySystem }) {
                 fullWidth
                 variant="outlined"
                 margin="normal"
-                style={{ width: "60%" }}
               />
             </Grid>
           ))}
         </Grid>
-        <br></br>
+        <br />
         <Grid item xs={12}>
           <Button onClick={handleSearch} variant="contained" color="primary">
             Search
@@ -217,49 +189,162 @@ function FileMedia({ isSecuritySystem }) {
                 <Card raised>
                   <CardContent>
                     <Typography variant="body2" component="p">
-                      Name: {result.name}
+                      Name: {result.name || result.printed_name}
                       <br />
-                      Position: {result.position_applying_for}
-                      <br />
+                      {result.position_applying_for && (
+                        <>
+                          Position: {result.position_applying_for}
+                          <br />
+                        </>
+                      )}
                       Date of Birth: {result.date_of_birth}
+                      {result.date && (
+                        <>
+                          <br />
+                          Date: {result.date}
+                        </>
+                      )}
                     </Typography>
-                    <iframe
-                      src={result.pdf_url}
-                      style={{ width: "100%", height: "500px" }}
-                      frameBorder="0"
-                    >
-                      PDF cannot be displayed
-                    </iframe>
+                    {result.pdf_url && (
+                      <iframe
+                        src={result.pdf_url}
+                        className="file-media-iframe"
+                        title={`pdf-${index}`}
+                        width="100%"
+                        height="500px"
+                      >
+                        PDF cannot be displayed
+                      </iframe>
+                    )}
                   </CardContent>
                   <CardActions>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      href={result.pdf_url}
-                      target="_blank"
-                    >
-                      View PDF
-                    </Button>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      href={result.pdf_url}
-                      download
-                    >
-                      Download PDF
-                    </Button>
+                    {result.pdf_url && (
+                      <>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          href={result.pdf_url}
+                          target="_blank"
+                        >
+                          View PDF
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          href={result.pdf_url}
+                          download
+                        >
+                          Download PDF
+                        </Button>
+                      </>
+                    )}
                   </CardActions>
                 </Card>
               </Grid>
             ))
           ) : (
-            <Typography
-              variant="h6"
-              sx={{ width: "100%", mt: 2, textAlign: "center" }}
-            >
+            <Typography variant="h6" className="no-results-message">
               No results found or error in fetching data.
             </Typography>
           )}
+        </Grid>
+
+        <br />
+        <Typography variant="h5" gutterBottom>
+          Send Form via Email
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              label="Email"
+              name="email"
+              value={emailParams.email}
+              onChange={handleEmailChange}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              label="Subject"
+              name="subject"
+              value={emailParams.subject}
+              onChange={handleEmailChange}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Message"
+              name="message"
+              value={emailParams.message}
+              onChange={handleEmailChange}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              multiline
+              rows={4}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <FormControl fullWidth variant="outlined" margin="normal">
+              <InputLabel id="select-forms-label">Select Forms</InputLabel>
+              <Select
+                labelId="select-forms-label"
+                multiple
+                value={emailParams.filenames}
+                onChange={(e) =>
+                  setEmailParams({ ...emailParams, filenames: e.target.value })
+                }
+                input={<OutlinedInput label="Select Forms" />}
+                renderValue={(selected) => selected.join(", ")}
+              >
+                {availableForms.map((form) => (
+                  <MenuItem key={form} value={form}>
+                    <Checkbox
+                      checked={emailParams.filenames.indexOf(form) > -1}
+                    />
+                    <ListItemText primary={form} />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              label="User"
+              name="user"
+              value={emailParams.user}
+              onChange={handleEmailChange}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              label="Password"
+              name="password"
+              type="password"
+              value={emailParams.password}
+              onChange={handleEmailChange}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              onClick={handleSendEmail}
+              variant="contained"
+              color="primary"
+            >
+              Send Email
+            </Button>
+          </Grid>
         </Grid>
       </Paper>
     </Container>

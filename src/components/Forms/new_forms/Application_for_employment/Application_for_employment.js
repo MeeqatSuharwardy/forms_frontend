@@ -164,25 +164,33 @@ function EmploymentForm() {
             <br></br>
             <h3>PERSONAL DATA</h3>
             <label>Name (Last, First, Middle):</label>
+            <br></br>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
+            <br></br>
             <label>Date of Birth :</label>
+            <br></br>
             <input
               type="date"
               name="dateofbirth"
               value={formData.dateofbirth}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
+            <br></br>
             <label>Full Address:</label>
+            <br></br>
             <input
               type="text"
               name="address"
               value={formData.address}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
             <br></br>
             <label>Home Telephone Number:</label> <br></br>
@@ -191,6 +199,7 @@ function EmploymentForm() {
               name="homeTelephone"
               value={formData.homeTelephone}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
             <br></br>
             <label>Business Telephone Number:</label> <br></br>
@@ -199,6 +208,7 @@ function EmploymentForm() {
               name="businessTelephone"
               value={formData.businessTelephone}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
             <br></br>
             <label>Cellular Telephone Number:</label> <br></br>
@@ -207,6 +217,7 @@ function EmploymentForm() {
               name="cellular"
               value={formData.cellular}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
             <br></br>
             <label>Date you can start work:</label> <br></br>
@@ -215,6 +226,7 @@ function EmploymentForm() {
               name="startDate"
               value={formData.startDate}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
             <br></br>
             <label>Salary Desired:</label>
@@ -223,6 +235,7 @@ function EmploymentForm() {
               name="salaryDesired"
               value={formData.salaryDesired}
               onChange={handleInputChange}
+              style={{ width: "40%", alignSelf: "center" }}
             />
             <br></br>
             <br></br>
@@ -334,12 +347,15 @@ function EmploymentForm() {
             {formData.references.map((reference, index) => (
               <div key={index}>
                 <label>Name:</label>
+                <br></br>
                 <input
                   type="text"
                   name="name"
                   value={reference.name}
                   onChange={(e) => handleInputChange(e, "references", index)}
+                  style={{ width: "40%", alignSelf: "center" }}
                 />
+                <br></br>
                 <label>Phone:</label>
                 <br></br>
                 <input
@@ -347,14 +363,17 @@ function EmploymentForm() {
                   name="phone"
                   value={reference.phone}
                   onChange={(e) => handleInputChange(e, "references", index)}
+                  style={{ width: "40%", alignSelf: "center" }}
                 />
                 <br></br>
                 <label>Relationship:</label>
+                <br></br>
                 <input
                   type="text"
                   name="relationship"
                   value={reference.relationship}
                   onChange={(e) => handleInputChange(e, "references", index)}
+                  style={{ width: "40%", alignSelf: "center" }}
                 />
                 <br></br>
                 <br></br>
@@ -364,6 +383,7 @@ function EmploymentForm() {
                 >
                   Remove
                 </button>
+                <br></br>
                 <br></br>
               </div>
             ))}
@@ -389,6 +409,7 @@ function EmploymentForm() {
                   name="startDate"
                   value={job.startDate}
                   onChange={(e) => handleInputChange(e, "workHistory", index)}
+                  style={{ width: "40%", alignSelf: "center" }}
                 />
                 <br></br>
                 <label>End Date (mo/day/yr):</label>
@@ -398,6 +419,7 @@ function EmploymentForm() {
                   name="endDate"
                   value={job.endDate}
                   onChange={(e) => handleInputChange(e, "workHistory", index)}
+                  style={{ width: "40%", alignSelf: "center" }}
                 />
                 <br></br>
                 <label>Company Name:</label>
@@ -481,6 +503,7 @@ function EmploymentForm() {
                 </button>
               </div>
             ))}
+            <br></br>
             <button
               type="button"
               onClick={() => addSectionField("workHistory")}
@@ -488,8 +511,8 @@ function EmploymentForm() {
               + Add Work History
             </button>
             <br></br>
-            <br></br>
           </div>
+          <br></br>
           <input type="submit" value="Submit Application" />
         </form>
       </div>

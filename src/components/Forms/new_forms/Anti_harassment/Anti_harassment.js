@@ -511,6 +511,7 @@ function AntiHarassmentForm() {
             id="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            style={{ width: "40%", alignSelf: "center" }}
           />
           <br />
           <label htmlFor="printedName" style={{ alignSelf: "center" }}>
@@ -521,6 +522,7 @@ function AntiHarassmentForm() {
             type="text"
             value={printedName}
             onChange={(e) => setPrintedName(e.target.value)}
+            style={{ width: "40%", alignSelf: "center" }}
           />
           <br />
           <label htmlFor="dateOfBirth" style={{ alignSelf: "center" }}>
@@ -531,6 +533,7 @@ function AntiHarassmentForm() {
             type="date"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
+            style={{ width: "40%", alignSelf: "center" }}
           />
           <br />
           <br />

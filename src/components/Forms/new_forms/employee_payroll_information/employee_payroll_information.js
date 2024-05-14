@@ -131,6 +131,7 @@ function EmployeePayrollForm() {
             value={formData.dateOfHire}
             onChange={handleInputChange}
             required
+            style={{ width: "50%", alignSelf: "center" }}
           />
         </div>
         <div className="form-group">
@@ -150,6 +151,7 @@ function EmployeePayrollForm() {
             name="changePositionDate"
             value={formData.changePositionDate}
             onChange={handleInputChange}
+            style={{ width: "50%", alignSelf: "center" }}
           />
         </div>
         <div className="form-group">
@@ -197,6 +199,7 @@ function EmployeePayrollForm() {
             name="effectiveDate"
             value={formData.effectiveDate}
             onChange={handleInputChange}
+            style={{ width: "50%", alignSelf: "center" }}
           />
         </div>
         <div className="form-group">
@@ -206,6 +209,7 @@ function EmployeePayrollForm() {
             name="approvalDate"
             value={formData.approvalDate}
             onChange={handleInputChange}
+            style={{ width: "50%", alignSelf: "center" }}
           />
         </div>
         <div className="form-group">
@@ -213,25 +217,27 @@ function EmployeePayrollForm() {
             I acknowledge and agree to the payroll information above, including
             my pay rate:
           </label>
-          <div className="signature-container">
-            <canvas
-              ref={signatureCanvas}
-              id="signatureCanvas"
-              width="400"
-              height="200"
-              onMouseDown={startDrawing}
-              onMouseMove={draw}
-              onMouseUp={finishDrawing}
-              onMouseLeave={finishDrawing}
-            />
-            <button
-              type="button"
-              className="btn btn-secondary btn-clear"
-              onClick={clearSignature}
-            >
-              Clear Signature
-            </button>
-          </div>
+
+          <canvas
+            ref={signatureCanvas}
+            id="signatureCanvas"
+            className="signature-container"
+            width="400"
+            height="200"
+            onMouseDown={startDrawing}
+            onMouseMove={draw}
+            onMouseUp={finishDrawing}
+            onMouseLeave={finishDrawing}
+          />
+          <br></br>
+          <br></br>
+          <button
+            type="button"
+            className="btn btn-secondary btn-clear"
+            onClick={clearSignature}
+          >
+            Clear Signature
+          </button>
         </div>
         <div className="form-group">
           <label>Date Signed:</label>
@@ -241,6 +247,7 @@ function EmployeePayrollForm() {
             value={formData.dateSigned}
             onChange={handleInputChange}
             required
+            style={{ width: "40%", alignSelf: "center" }}
           />
         </div>
         <div className="form-group text-center">

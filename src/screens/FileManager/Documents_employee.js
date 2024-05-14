@@ -9,40 +9,28 @@ class FileDocumentsEmployee extends React.Component {
   state = {
     documents: [
       {
-        name: "Anti-Harassment Agreement",
-        path: `${process.env.PUBLIC_URL}/AntiHarassmentForm`,
-      },
-      {
         name: "Employee Information",
         path: `${process.env.PUBLIC_URL}/EmploymentForm`,
-      },
-      {
-        name: "Cell Phone Agreement",
-        path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
-      },
-      {
-        name: "Direct Deposit",
-        path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
       },
       {
         name: "Emergency Contacts",
         path: `${process.env.PUBLIC_URL}/EmployeeEmergencyContacts`,
       },
       {
-        name: "Employee Payroll",
-        path: `${process.env.PUBLIC_URL}/EmployeePayrollForm`,
+        name: "Anti-Harassment Agreement",
+        path: `${process.env.PUBLIC_URL}/AntiHarassmentForm`,
       },
       {
-        name: "HIPPA Agreement",
+        name: "HIPAA Agreement",
         path: `${process.env.PUBLIC_URL}/EmployeeConfidentialityForm`,
       },
       {
-        name: "Receipt of Company Property",
-        path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
+        name: "Cell Phone Agreement",
+        path: `${process.env.PUBLIC_URL}/CellPhonePolicyForm`,
       },
       {
-        name: "2024 I-9 Form ",
-        path: `${process.env.PUBLIC_URL}/I9PDF`,
+        name: "Employee Payroll",
+        path: `${process.env.PUBLIC_URL}/EmployeePayrollForm`,
       },
 
       {
@@ -50,8 +38,23 @@ class FileDocumentsEmployee extends React.Component {
         path: `${process.env.PUBLIC_URL}/Fw4PDF`,
       },
       {
+        name: "2024 I-9 Form ",
+        path: `${process.env.PUBLIC_URL}/I9PDF`,
+      },
+
+      {
+        name: "Direct Deposit",
+        path: `${process.env.PUBLIC_URL}/DirectDepositForm`,
+      },
+
+      {
         name: "Employee Handbook",
         path: EH,
+      },
+
+      {
+        name: "Receipt of Company Property",
+        path: `${process.env.PUBLIC_URL}/ReceiptOfCompanyProperty`,
       },
     ],
   };
